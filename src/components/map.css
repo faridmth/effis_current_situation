@@ -1,0 +1,29 @@
+.leaflet-container {
+    height: 100vh;
+}
+.app-container{
+    padding: 10px;
+    position: relative;
+}
+.panel-container{
+    background-color: red;
+    position: absolute;
+}
+.panel{
+    position: relative;
+    z-index: 88888888888888888;
+    background-color: rgba(208, 208, 208, 0.941);
+    width: 300px;
+    display: block;
+}
+.map-options{
+    border: 1px solid red;
+    padding: 15px;
+}
+.forcast-container{
+    display: flex;
+    justify-content: space-around
+}
+#Date-cont1{
+    background-color: aqua;
+}
