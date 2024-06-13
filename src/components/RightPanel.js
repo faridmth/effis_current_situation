@@ -1,6 +1,8 @@
 import React from 'react'
 import { AiOutlineMenu } from "react-icons/ai";
 import { TfiMenuAlt } from "react-icons/tfi";
+import { FiPlus } from "react-icons/fi";
+import { FiMinus } from "react-icons/fi";
 import Legend from './Legend';
 
 const RightPanel = ({
@@ -15,7 +17,8 @@ const RightPanel = ({
     showActiveModis,
     showActiveViirs,
     showBurntModis,
-    showBurntViirs
+    showBurntViirs,
+    map
 }) => {
 
     const handleClick= ()=>{
@@ -24,10 +27,24 @@ const RightPanel = ({
     const handleClick2= ()=>{
         setShowRightPanel(pre=>!pre)
     }
+    const zoomIn = () => {
+        if (map) {
+          map.zoomIn();
+        }
+      };
+    
+      const zoomOut = () => {
+        if (map) {
+          map.zoomOut();
+        }
+      };
+    
   return (
     <div className='right-panel-component'>
         <div className='right-panel-btns'>
         <button onClick={handleClick}><AiOutlineMenu /></button>
+        <button onClick={zoomIn}><FiPlus /></button>
+        <button onClick={zoomOut} ><FiMinus /></button>
         <button onClick={handleClick2}><TfiMenuAlt /></button>
         </div>
         <div className='legend-container'>

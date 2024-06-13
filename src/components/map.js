@@ -1,5 +1,5 @@
 // src/MapComponent.js
-import React, { useState } from 'react';
+import React, { useState,useRef,useEffect  } from 'react';
 import './map.css'
 import { MapContainer, TileLayer, WMSTileLayer } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -37,7 +37,8 @@ const MapComponent = () => {
   const [showPanel,setShowPanel]=useState(true)
   const [showRightPanel,setShowRightPanel]=useState(false)
   // zoom
-
+  const mapRef = useRef(null);
+  const [map, setMap] = useState(null);
 
   return (
     <div className='app-container'>
@@ -62,7 +63,18 @@ const MapComponent = () => {
           </div>
       
         <div className='map-container'>
-          <MapContainer center={[45.8575,  8.3514]} zoomControl={false}  zoom={5} style={{ height: '630px', width: '100%' }} crs={L.CRS.EPSG3857}>      
+          <MapContainer 
+            center={[45.8575,  8.3514]} 
+            zoomControl={false} 
+            zoom={5} style={{ height: '630px', width: '100%' }}
+            crs={L.CRS.EPSG3857}
+            ref={(mapInstance) => {
+              if (mapInstance) {
+                mapRef.current = mapInstance;
+                setMap(mapInstance);
+              }
+            }}
+          >      
           <TileLayer
             url="https://tile.thunderforest.com/landscape/{z}/{x}/{y}.png?apikey=d3c77f64d0504351b6650326d33b7af2"
             
@@ -108,10 +120,12 @@ const MapComponent = () => {
               showActiveViirs={showActiveViirs}
               showBurntModis={showBurntModis}
               showBurntViirs={showBurntViirs}
+              map={map}
               />
             </div>
 
         </div>
+        
     </div>
   );
 };

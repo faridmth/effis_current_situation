@@ -1,8 +1,12 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+}
+body h4{
+    font-family: "Roboto", sans-serif;
 }
 .leaflet-bottom {
     display: none;
@@ -41,20 +45,24 @@
     background-color: rgb(255, 255, 255);
     margin-top: 3px;
     font-size: 14px;
+    margin-bottom: 5px;
 }
 .map-options h4{
-    background-color: rgb(240, 146, 38);
+    background-color: rgb(246, 133, 3);
     color: white;
     padding:5px;
     border-top-right-radius: 7px;
     border-top-left-radius: 7px;
 
 }
+.check-box-cont{
+    padding: 3px 2px;
+}
 .map-options .checkboxes-component{
     margin-bottom: 5px;
 }
 .checkboxes-component{
-    padding: 2px 4px;
+    padding: 2px 5px;
     display: flex;
     align-items: center;
 }
@@ -65,12 +73,11 @@
     background-color: rgb(255, 255, 255);
     border-radius: 7px;
     font-size: 14px;
-    margin-top: 10px;
 }
 .forcast-panel h4{
     display: flex;
     padding:  5px;
-    background-color: rgb(240, 146, 38);
+    background-color: rgb(246, 133, 3);
     border-top-right-radius: 7px;
     border-top-left-radius: 7px;
     color: white;
@@ -126,12 +133,12 @@
 .rapid-damage-container{
     border-radius: 7px;
     background-color: rgb(255, 255, 255);
-    margin-top: 3px;
+    margin-top: 5px;
     font-size: 14px;
 }
 .rapid-damage-container h4{
     padding:5px;
-    background-color: rgb(240, 146, 38);
+    background-color: rgb(246, 133, 3);
     border-top-right-radius: 7px;
     border-top-left-radius: 7px;
     color: white;
@@ -193,7 +200,7 @@
     padding: 5px;
 }
 .rapid-damage-container .rdrCalendarWrapper{
-    transform: translate(170px,-15px);
+    transform: translate(210px,-40px);
 }
 .right-panel{
     overflow: auto;

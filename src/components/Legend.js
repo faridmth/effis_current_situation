@@ -1,7 +1,7 @@
 import React, { useEffect,useState} from 'react'
 import LegendElment from './LegendElment';
 import {data1,data2,data3,data4} from './legendsData/map-options'
-import { example1,example2,example3,example4 } from './legendsData/forcastData';
+import { example1,example2,example3,example4,example5,example6 } from './legendsData/forcastData';
 import {data} from './selectData'
 import ActiveModis from './legendsData/ActiveModis';
 import ActiveViirs from './legendsData/ActiveViirs';
@@ -22,8 +22,11 @@ const Legend = ({
 }) => {
     let group1 = [0]
     let group2 = [1,2,3,4,5]
-    let group3 = [6,8,9,10,11,12,13,14,15,16,17]
+    let group3 = [6,8,9,10,11,12,13,14,15,16,18,19,20,21,22,23]
     let group4 = [7]
+    let group5=[17]
+    let group6=[24]
+
 
     const [dataForcast,setDataForcast]=useState(example1)
 
@@ -38,6 +41,12 @@ const Legend = ({
         }
         else if (group4.includes(selectedIndexOption)) {
             setDataForcast(example4);
+        }
+        else if (group5.includes(selectedIndexOption)) {
+            setDataForcast(example5);
+        }
+        else if (group6.includes(selectedIndexOption)) {
+            setDataForcast(example6);
         }
         else{
             setDataForcast([])
