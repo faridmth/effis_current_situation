@@ -1,29 +1,247 @@
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.leaflet-bottom {
+    display: none;
+}
 .leaflet-container {
-    height: 100vh;
+    height: 100%;
 }
 .app-container{
-    padding: 10px;
     position: relative;
+    height: 100%;
+    overflow: hidden;
 }
 .panel-container{
-    background-color: red;
     position: absolute;
+    height: 100%;
+    z-index: 88888888;
 }
 .panel{
     position: relative;
     z-index: 88888888888888888;
-    background-color: rgba(208, 208, 208, 0.941);
     width: 300px;
     display: block;
+    height: 100%;
+    margin-left: 3px;
+    transition:  0.5s ease-in;
+    left: 0px;
+
+}
+.hide-panel{
+    position: relative;
+    left: -305px;
+    transition:  0.5s ease;
 }
 .map-options{
-    border: 1px solid red;
-    padding: 15px;
+    border-radius: 7px;
+    background-color: rgb(255, 255, 255);
+    margin-top: 3px;
+    font-size: 14px;
 }
-.forcast-container{
+.map-options h4{
+    background-color: rgb(240, 146, 38);
+    color: white;
+    padding:5px;
+    border-top-right-radius: 7px;
+    border-top-left-radius: 7px;
+
+}
+.map-options .checkboxes-component{
+    margin-bottom: 5px;
+}
+.checkboxes-component{
+    padding: 2px 4px;
     display: flex;
-    justify-content: space-around
+    align-items: center;
 }
+.checkboxes-component input{
+    margin-right: 5px;
+}
+.forcast-panel{
+    background-color: rgb(255, 255, 255);
+    border-radius: 7px;
+    font-size: 14px;
+    margin-top: 10px;
+}
+.forcast-panel h4{
+    display: flex;
+    padding:  5px;
+    background-color: rgb(240, 146, 38);
+    border-top-right-radius: 7px;
+    border-top-left-radius: 7px;
+    color: white;
+}
+.forecast-container{
+    display: flex;
+    padding: 2px;
+    position: relative;
+}
+.forecast-container p{
+    font-weight: bold;
+}
+.forecast-container{
+    display: flex;
+    padding-top: 5px;
+
+}
+.forecast-container .input-cont{
+    width: 60px;
+    padding-left: 5px;    
+}
+.forcast-selection{
+    display: flex;
+    align-items: center;
+    padding: 5px 0px;
+}
+.forcast-selection p{
+    width: 60px;
+    padding-left: 7px;
+
+}
+
 #Date-cont1{
-    background-color: aqua;
+    display: flex;
+    align-items: center;
+    padding-bottom: 3px;
+    cursor: pointer;
 }
+#Date-cont1 p{
+    display: flex;
+    margin-left: 15px;
+    position: relative;
+}
+.rdrCalendarWrapper {
+    font-size: 10px !important;
+    position: absolute;
+
+}
+#Date-cont1 .rdrCalendarWrapper {
+    transform: translateY(120px);
+    z-index: 55555555555555;
+}
+.rapid-damage-container{
+    border-radius: 7px;
+    background-color: rgb(255, 255, 255);
+    margin-top: 3px;
+    font-size: 14px;
+}
+.rapid-damage-container h4{
+    padding:5px;
+    background-color: rgb(240, 146, 38);
+    border-top-right-radius: 7px;
+    border-top-left-radius: 7px;
+    color: white;
+}
+.pre-selected-ranges{
+    padding: 5px;
+}
+.pre-selected-ranges button{
+    padding: 3px 4px;
+    border: 1px solid rgb(175, 175, 175);
+    border-radius: 5px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.pre-selected-ranges .first-row button{
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+#range-selection-calendar{
+    margin-left: 45px;
+    width: 40px;
+}
+.rdrMonthAndYearWrapper{
+    padding: 0px !important;
+    height: 30px !important;
+}
+.range-display-text{
+    text-align: center;
+    margin-top: 5px;
+}
+.range-picker-container .select-rang-title{
+    text-align: center;
+    margin-top: 5px;
+}
+.range-picker-container{
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgb(185, 185, 185);
+}
+
+.active-fires{
+    padding: 5px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgb(185, 185, 185);
+    margin-bottom: 5px;
+
+}
+.burnt-areas p ,.active-fires p{
+    text-align: center;
+    
+}
+.active-fires div{
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-around;
+}
+.burnt-areas div{
+    margin-top: 5px;
+    padding: 5px;
+}
+.rapid-damage-container .rdrCalendarWrapper{
+    transform: translate(170px,-15px);
+}
+.right-panel{
+    overflow: auto;
+}
+.hide-right-panel,.right-panel{
+    font-size: 14px;
+    position: absolute;
+    height: 100%;
+    width: 250px;
+    z-index: 999988888999999;
+    padding-right: 10px;
+    padding-top: 5px;
+    right: 0;
+    top: 0;
+    display: block;
+    background-color: rgba(252, 252, 252, 0.945);
+    transition:  0.5s ease-in;
+}
+.hide-right-panel{
+    right: -215px;
+    transition:  0.5s ease-in;
+
+}
+.right-panel-component{
+    position: relative;
+    z-index: 88888888888888888;
+    display: flex;
+    height: 100%;
+    
+}
+.right-panel-component button{
+    margin-top: 5px;
+    padding: 5px;
+    border: none;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    
+}
+.right-panel-btns{
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+}
+.legend-container{
+    background-color: rgb(255, 255, 255);
+    justify-self: end;
+    flex: 1;
+    height: 100%;
+}
+

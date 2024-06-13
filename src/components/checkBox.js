@@ -5,7 +5,7 @@ const CheckBox = ({label,name,handler}) => {
         handler(pre=>!pre)
     }
   return (
-    <div>
+    <div className='checkboxes-component'>
         <input type="checkbox" id={name} onChange={clickhandler}/>
         <label htmlFor={name}>{label}</label>
     </div>

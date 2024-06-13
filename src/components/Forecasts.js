@@ -3,6 +3,7 @@ import Select from 'react-select';
 import {data} from './selectData';
 import {ecmwfOptions,frForcastOptions} from './selectOptions'
 import MyDatePicker from './MyDatePicker';
+import {customStyles} from './selectStyles'
 const Srcoptions = [
   { value: 'frForcast', label: 'Météo France' },
   { value: 'ECMWF', label: 'ECMWF (8 km res.)' },
@@ -28,36 +29,42 @@ const Forecasts = ({setSelectedIndexOption,selectedIndexOption,isCheckedForcast,
   },[selectedSrcOption,selectedind])
 
   return (
-    <div>
+    <div className='forcast-panel'>
       <div>
-        <h3>Prévisions</h3>
+        <h4>Prévisions</h4>
       </div>
       <div class='forecast-container'>
-      <input
-        type="checkbox"
-        id="myCheckbox"
-        checked={isCheckedForcast}
-        onChange={handleCheckboxChange}
-      />        
-      <h3>Prévisions de danger d'incendie</h3>
+        <div className='input-cont'>
+          <input
+            type="checkbox"
+            id="myCheckbox"
+            checked={isCheckedForcast}
+            onChange={handleCheckboxChange}
+            />     
+        </div>
+        <p>Prévisions de danger d'incendie</p>
       </div>
-      <div>
-        <h4>Source</h4>
+      <div className='forcast-selection'>
+        <p>Source :</p>
         <Select
-        value={selectedSrcOption}
+          value={selectedSrcOption}
           onChange={handleChangeSrc}
           options={Srcoptions}
+          styles={customStyles}
         />
       </div>
-      <div>
-        <h4>index</h4>
+      <div className='forcast-selection'>
+        <p>index :</p>
         <Select
           value={selectedind}
           onChange={handleChangeIndex}
           options={selectedSrcOption.value=="ECMWF"?ecmwfOptions:frForcastOptions}
+          styles={customStyles}
+        
         />
       </div>
-      <div>
+      <div className='forcast-selection'>
+        <p>Date :</p>
         <MyDatePicker setSelectedDate={setSelectedDate}/>
       </div>
     </div>

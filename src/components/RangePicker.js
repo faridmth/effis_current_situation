@@ -5,6 +5,8 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 import fr from 'date-fns/locale/fr'; // Import French locale
 import { setDate } from 'date-fns';
 import { formatDateRange } from './functions';
+import { FaRegCalendarDays } from "react-icons/fa6";
+
 
 
 const formatDate = (date) => {
@@ -21,6 +23,9 @@ const RangePicker = ({setRange}) => {
     useEffect(()=>{
       if(document.querySelector('.rdrDefinedRangesWrapper')){
         document.querySelector('.rdrDefinedRangesWrapper').style.display='none'
+      }
+      if(document.querySelector('.rdrDateDisplayWrapper')){
+        document.querySelector('.rdrDateDisplayWrapper').style.display='none'
       }
     },[showDateRangePicker])
     useEffect(()=>{
@@ -49,12 +54,20 @@ const RangePicker = ({setRange}) => {
     }
     
   return (
-    <div>
-        <button onClick={()=> handleDateChange(1)}>dernier jour</button>
-        <button onClick={()=>handleDateChange(7)}>semaine dernière</button>
-        <button onClick={()=>handleDateChange(30)}>mois dernier</button>
-        <button onClick={()=>fireSeasonHandler()}>saison des incendies</button>
-        <button onClick={handleClick}>date</button>
+    <div className='range-picker-container'>
+      <p className='select-rang-title'>Sélectionner une période</p>
+      <div className='pre-selected-ranges'>
+        <div className='first-row'>
+          <button onClick={()=> handleDateChange(1)}>dernier jour</button>
+          <button onClick={()=>handleDateChange(7)}>semaine dernière</button>
+          <button onClick={()=>handleDateChange(30)}>mois dernier</button>
+        </div>
+        <div className='second-row'>
+          <button onClick={()=>fireSeasonHandler()}>saison des incendies</button>
+          <button onClick={handleClick} id='range-selection-calendar'><FaRegCalendarDays  style={{opacity:0.7}} /></button>
+        </div>
+      </div>
+        
         {
           showDateRangePicker && (
             <DateRangePicker
@@ -62,11 +75,10 @@ const RangePicker = ({setRange}) => {
             ranges={[selectionRange]}
             onChange={selectHandler}
             moveRangeOnFirstSelection={false}
-            
         />
           )
         }
-            <p>{`du : ${formatDate(selectionRange.startDate)} au ${formatDate(selectionRange.endDate)}`}</p>
+        <p className='range-display-text'>{`Du : ${formatDate(selectionRange.startDate)} Au ${formatDate(selectionRange.endDate)}`}</p>
       </div>
   )
 }
