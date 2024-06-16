@@ -18,10 +18,10 @@ export const example1 = [
 export const example3 = [
     { label: 'Très faible', color: '#99ff66' },
     { label: 'Faible ', color: '#ffff66' },
-    { label: 'modéré', color: '#ff9933' },
+    { label: 'Modéré', color: '#ff9933' },
     { label: 'Haut', color: '#ff0000' },
     { label: 'Très haut', color: '#990000' },
-    { label: 'extrême', color: '#660000' }
+    { label: 'Extrême', color: '#660000' }
 ];
 export const example4 = [
     { label: 'Très faible rang (< 80)', color: '#99ff66' },
@@ -33,11 +33,11 @@ export const example4 = [
 ];
 export const example5 = [
     { label: 'Faible', color: '#99ff66' },
-    { label: 'modéré', color: '#ffff66' },
-    { label: 'élevé', color: '#ff9933' },
-    { label: 'très élevé', color: '#ff3333' },
+    { label: 'Modéré', color: '#ffff66' },
+    { label: 'Élevé', color: '#ff9933' },
+    { label: 'Très élevé', color: '#ff3333' },
     { label: 'Extrême', color: '#cc0000' },
-    { label: 'très extrême', color: '#660000' },
+    { label: 'Très extrême', color: '#660000' },
   ]
   export const example6 = [
     { label: 'Très faible rang (< 75)', color: '#99ff66' },

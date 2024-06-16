@@ -31,7 +31,7 @@ const Forecasts = ({setSelectedIndexOption,selectedIndexOption,isCheckedForcast,
   return (
     <div className='forcast-panel'>
       <div>
-        <h4>Prévisions</h4>
+        <h4>Météo des forêts</h4>
       </div>
       <div class='forecast-container'>
         <div className='input-cont'>
@@ -42,7 +42,7 @@ const Forecasts = ({setSelectedIndexOption,selectedIndexOption,isCheckedForcast,
             onChange={handleCheckboxChange}
             />     
         </div>
-        <p>Prévisions de danger d'incendie</p>
+        <p>Prévisions du risque d'incendie</p>
       </div>
       <div className='forcast-selection'>
         <p>Source :</p>

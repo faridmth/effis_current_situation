@@ -21,14 +21,14 @@ const Panel = ({
     showPanel
 }) => {
   return (
-    <div className={showPanel?'panel':'hide-panel'}>
+    <div className={showPanel?'panel':'hide-panel'} id='ress-pannel'>
       <div className='map-options'>
             <h4>Options de carte</h4>
             <div className='check-box-cont'>
-            <CheckBox label="Couche de l'établissement humain" name="humanLayer" handler={setShowHumainLayer}/>
-            <CheckBox label="Couche des zones protégées" name="protectedAreas" handler={setShowProtectedAreasLayer}/>
-            <CheckBox label="Couverture terrestre de Corine" name="landCover" handler={setShowLandCoverLayer}/>
-            <CheckBox label="CARBURANTS" name="fuels" handler={setShowFuelsLayer}/>
+            <CheckBox label="Zone habitations/industries" name="humanLayer" handler={setShowHumainLayer}/>
+            <CheckBox label="Zones protégées" name="protectedAreas" handler={setShowProtectedAreasLayer}/>
+            <CheckBox label="Zone couverture végétale" name="landCover" handler={setShowLandCoverLayer}/>
+            <CheckBox label="Matière inflammable" name="fuels" handler={setShowFuelsLayer}/>
             </div>
         </div> 
         <div>
@@ -41,7 +41,7 @@ const Panel = ({
             />  
         </div>
        <div className='rapid-damage-container'>
-          <h4>Évaluation rapide des dégâts</h4>
+          <h4>Dégâts causés par les incendies</h4>
         <div>
           <RangePicker setRange={setRange}/>
           </div>    

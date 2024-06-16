@@ -3,29 +3,31 @@ import React, { useState,useRef,useEffect  } from 'react';
 import './map.css'
 import { MapContainer, TileLayer, WMSTileLayer } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import L from 'leaflet';
 import Panel from './panel';
 import MapOptions from './mapOptions';
 import { data } from './selectData';
 import RapidDamageLayers from './rapidDamageLayers';
 import RightPanel from './RightPanel';
+import { apiKeys } from './functions';
 
-// Fix icon issue with React-Leaflet
-delete L.Icon.Default.prototype._getIconUrl;
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
-  iconUrl: require('leaflet/dist/images/marker-icon.png'),
-  shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
-});
+
 
 const MapComponent = () => {
+  const [apikey,setApiKey]=useState('')
+  useEffect(()=>{
+    const randoApiKey = apiKeys();
+    setApiKey(randoApiKey)
+  },[])
+  const tileLayerUrl = `https://tile.thunderforest.com/landscape/{z}/{x}/{y}.png?apikey=${apikey}`;
+
+  //
   const [showHumainLayer, setShowHumainLayer] = useState(false);
   const [showProtectedAreasLayer, setShowProtectedAreasLayer] = useState(false);
   const [showLandCoverLayer, setShowLandCoverLayer] = useState(false);
   const [showFuelsLayer, setShowFuelsLayer] =  useState(false);
   //
-  const [selectedIndexOption, setSelectedIndexOption] = useState(null);
-  const [isCheckedForcast, setIsCheckedForcast] = useState(false);
+  const [selectedIndexOption, setSelectedIndexOption] = useState(0);
+  const [isCheckedForcast, setIsCheckedForcast] = useState(true);
   const [selectedDate,setSelectedDate]=useState(new Date())
   //
   const[showActiveModis,setShowActiveModis]=useState(false)
@@ -35,10 +37,43 @@ const MapComponent = () => {
   const[range,setRange]=useState()
   // show and hide the panel
   const [showPanel,setShowPanel]=useState(true)
-  const [showRightPanel,setShowRightPanel]=useState(false)
+  const [showRightPanel,setShowRightPanel]=useState(true)
   // zoom
   const mapRef = useRef(null);
   const [map, setMap] = useState(null);
+  // ressponcive
+    const [width, setWidth] = useState(window.innerWidth);
+    useEffect(() => {
+      const handleResize = () => {
+        setWidth(window.innerWidth);
+      };
+      window.addEventListener('resize', handleResize);
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }, []);
+    useEffect(()=>{
+      if(width<1100 && width>500){
+        if(map){
+          map.setZoom(5)
+        }
+        setShowPanel(false)
+        setShowRightPanel(false)
+      }else if(width<500){        
+        if(map){
+        map.setZoom(3.5)
+        }
+        setShowRightPanel(false)
+        setShowPanel(false)
+      }else{
+        setShowRightPanel(true)
+        setShowPanel(true)
+        if(map){
+          map.setZoom(5)
+        }
+
+      }
+    },[width,map])
 
   return (
     <div className='app-container'>
@@ -64,10 +99,9 @@ const MapComponent = () => {
       
         <div className='map-container'>
           <MapContainer 
-            center={[45.8575,  8.3514]} 
+            center={[45.8575,  3]} 
             zoomControl={false} 
             zoom={5} style={{ height: '630px', width: '100%' }}
-            crs={L.CRS.EPSG3857}
             ref={(mapInstance) => {
               if (mapInstance) {
                 mapRef.current = mapInstance;
@@ -76,7 +110,7 @@ const MapComponent = () => {
             }}
           >      
           <TileLayer
-            url="https://tile.thunderforest.com/landscape/{z}/{x}/{y}.png?apikey=d3c77f64d0504351b6650326d33b7af2"
+            url={tileLayerUrl}
             
           />
 

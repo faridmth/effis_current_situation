@@ -29,4 +29,15 @@ export const getTodayDate = () => {
     
     return `${formatDate(startDate)}/${formatDate(endDate)}`;
   };
-  
+   export const apiKeys = ()=>{
+    const apiKeys = [
+        'c158c9d02cda4ff1aeae2ad6635dfc9f',
+        'b97f40e34f2341ed909a89e7fadf0add',
+        'd3c77f64d0504351b6650326d33b7af2',
+        'e2a336b21b76476a8fb73b1e1110cde0',
+        'd3c77f64d0504351b6650326d33b7af2'
+    ];
+    
+    const randomIndex = Math.floor(Math.random() * apiKeys.length);
+    return apiKeys[randomIndex];
+}
